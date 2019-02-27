@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TestProgramDataBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="NewsPosts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DataSourceId" Type="int" Nullable="false" />
+          <Property Name="NewsName" Type="nvarchar(max)" />
+          <Property Name="NewsDescription" Type="nvarchar(max)" />
+          <Property Name="DateOfPublication" Type="datetime" />
+          <Property Name="ResourceID" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="NewsSources">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Url" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_NewsPosts_NewsSources">
+          <End Role="NewsSources" Type="Self.NewsSources" Multiplicity="1" />
+          <End Role="NewsPosts" Type="Self.NewsPosts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsSources">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NewsPosts">
+              <PropertyRef Name="DataSourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TestProgramDataBaseModelStoreContainer">
+          <EntitySet Name="NewsPosts" EntityType="Self.NewsPosts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsSources" EntityType="Self.NewsSources" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_NewsPosts_NewsSources" Association="Self.FK_NewsPosts_NewsSources">
+            <End Role="NewsSources" EntitySet="NewsSources" />
+            <End Role="NewsPosts" EntitySet="NewsPosts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TestProgramDataBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TestProgramDataBaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="NewsPosts" EntityType="TestProgramDataBaseModel.NewsPost" />
+          <EntitySet Name="NewsSources" EntityType="TestProgramDataBaseModel.NewsSource" />
+          <AssociationSet Name="FK_NewsPosts_NewsSources" Association="TestProgramDataBaseModel.FK_NewsPosts_NewsSources">
+            <End Role="NewsSource" EntitySet="NewsSources" />
+            <End Role="NewsPost" EntitySet="NewsPosts" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="NewsPost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="DataSource" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NewsName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NewsDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfPublication" Type="DateTime" Precision="3" />
+          <Property Name="ResourceID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DataSourceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NewsSource" Relationship="TestProgramDataBaseModel.FK_NewsPosts_NewsSources" FromRole="NewsPost" ToRole="NewsSource" />
+        </EntityType>
+        <EntityType Name="NewsSource">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NewsPosts" Relationship="TestProgramDataBaseModel.FK_NewsPosts_NewsSources" FromRole="NewsSource" ToRole="NewsPost" />
+        </EntityType>
+        <Association Name="FK_NewsPosts_NewsSources">
+          <End Type="TestProgramDataBaseModel.NewsSource" Role="NewsSource" Multiplicity="1" />
+          <End Type="TestProgramDataBaseModel.NewsPost" Role="NewsPost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsSource">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NewsPost">
+              <PropertyRef Name="DataSourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TestProgramDataBaseModelStoreContainer" CdmEntityContainer="TestProgramDataBaseEntities">
+          <EntitySetMapping Name="NewsPosts">
+            <EntityTypeMapping TypeName="TestProgramDataBaseModel.NewsPost">
+              <MappingFragment StoreEntitySet="NewsPosts">
+                <ScalarProperty Name="DataSourceId" ColumnName="DataSourceId" />
+                <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+                <ScalarProperty Name="DateOfPublication" ColumnName="DateOfPublication" />
+                <ScalarProperty Name="NewsDescription" ColumnName="NewsDescription" />
+                <ScalarProperty Name="NewsName" ColumnName="NewsName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsSources">
+            <EntityTypeMapping TypeName="TestProgramDataBaseModel.NewsSource">
+              <MappingFragment StoreEntitySet="NewsSources">
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

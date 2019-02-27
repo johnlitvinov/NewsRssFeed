@@ -12,9 +12,11 @@ namespace OpenContact.BLL.Implementations
 {
    public class NewsReader: INewsReader
     {
-        public static void Reader()
+
+        public List<NewsPost> Read(string url)
         {
-            string url = "http://habrahabr.ru/rss/ ";
+            //string url = "http://habrahabr.ru/rss/ ";
+
             XmlReaderSettings readerSettings = new XmlReaderSettings();
             readerSettings.IgnoreComments = true;
             readerSettings.IgnoreWhitespace = true;
@@ -23,18 +25,23 @@ namespace OpenContact.BLL.Implementations
             //XmlDocument xml = new XmlDocument();
             //xml.Load(reader);
 
+            List<NewsPost> list = new List<NewsPost>();
+
             SyndicationFeed feed = SyndicationFeed.Load(reader);
             reader.Close();
             foreach (SyndicationItem item in feed.Items)
             {
-                String subject = item.Title.Text;
-                String summary = item.Summary.Text;
-            }
-        }
+                var newPost = new NewsPost();
+                newPost.ResourceId = item.Id;
+                newPost.NewsName = item.Title.Text;
+                newPost.DataSource = url;
+                newPost.NewsDescription = item.Summary.Text;
+                newPost.DateOfPublication = item.PublishDate.DateTime;
 
-        public List<NewsPost> Read(string url)
-        {
-            throw new NotImplementedException();
+                list.Add(newPost);
+            }
+            
+            return list;
         }
     }
 }

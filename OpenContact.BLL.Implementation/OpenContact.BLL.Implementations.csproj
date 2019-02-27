@@ -31,7 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
@@ -52,10 +59,18 @@
       <Project>{e7181bd7-5929-4b27-96ab-217e907c61e0}</Project>
       <Name>OpenContact.BLL.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OpenContact.EF\OpenContact.EF.csproj">
+      <Project>{999c8699-4682-4b36-8d69-9426f3a5a7fa}</Project>
+      <Name>OpenContact.EF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenContact.Models\OpenContact.Models.csproj">
       <Project>{ec8d5149-2eb2-44dc-9063-494c3dc30799}</Project>
       <Name>OpenContact.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

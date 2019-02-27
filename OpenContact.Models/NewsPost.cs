@@ -8,7 +8,7 @@ namespace OpenContact.Models
 {
     public class NewsPost
     {
-        public int Id { get; set; }
+        public string ResourceId { get; set; }
         public string DataSource { get; set; }
         public string NewsName { get; set; }
         public string NewsDescription { get; set; }
