@@ -49,11 +49,21 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="NewsReaderTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenContact.BLL.Implementation\OpenContact.BLL.Implementations.csproj">
+      <Project>{592d402a-270e-4a28-aa86-69b161bcf1aa}</Project>
+      <Name>OpenContact.BLL.Implementations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenContact.BLL\OpenContact.BLL.Interfaces.csproj">
+      <Project>{e7181bd7-5929-4b27-96ab-217e907c61e0}</Project>
+      <Name>OpenContact.BLL.Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using OpenContact.BLL.Interfaces;
 using System.Xml;
 using System.ServiceModel.Syndication;
+using OpenContact.Models;
 
 namespace OpenContact.BLL.Implementations
 {
@@ -29,6 +30,11 @@ namespace OpenContact.BLL.Implementations
                 String subject = item.Title.Text;
                 String summary = item.Summary.Text;
             }
+        }
+
+        public List<NewsPost> Read(string url)
+        {
+            throw new NotImplementedException();
         }
     }
 }

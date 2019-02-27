@@ -49,5 +49,11 @@
     <Compile Include="ISyncManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenContact.Models\OpenContact.Models.csproj">
+      <Project>{ec8d5149-2eb2-44dc-9063-494c3dc30799}</Project>
+      <Name>OpenContact.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

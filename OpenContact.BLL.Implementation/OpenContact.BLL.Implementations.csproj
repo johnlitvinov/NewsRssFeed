@@ -52,6 +52,10 @@
       <Project>{e7181bd7-5929-4b27-96ab-217e907c61e0}</Project>
       <Name>OpenContact.BLL.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OpenContact.Models\OpenContact.Models.csproj">
+      <Project>{ec8d5149-2eb2-44dc-9063-494c3dc30799}</Project>
+      <Name>OpenContact.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
