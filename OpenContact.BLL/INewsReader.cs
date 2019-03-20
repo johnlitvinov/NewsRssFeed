@@ -9,7 +9,6 @@ namespace OpenContact.BLL.Interfaces
 {
     public interface INewsReader
     {
-        List<NewsPost> Read(string url);
-       
+        List<NewsPostDTO> Read(string url);
     }
 }

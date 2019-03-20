@@ -5,8 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="e77111542c3a4a52a080f436f8d35c7d" Name="Diagram1">
-        <EntityTypeShape EntityType="TestProgramDataBaseModel.NewsPost" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TestProgramDataBaseModel.NewsSource" Width="1.5" PointX="3.625" PointY="1.125" />
+        <EntityTypeShape EntityType="TestProgramDataBaseModel.NewsPost" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="TestProgramDataBaseModel.NewsSource" Width="1.5" PointX="0.75" PointY="1.25" />
         <AssociationConnector Association="TestProgramDataBaseModel.FK_NewsPosts_NewsSources" />
       </Diagram>
     </edmx:Diagrams>

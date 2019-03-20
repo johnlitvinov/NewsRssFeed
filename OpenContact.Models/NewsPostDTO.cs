@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OpenContact.Models
 {
-    public class NewsPost
+    public class NewsPostDTO
     {
         public string ResourceId { get; set; }
         public string DataSource { get; set; }

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9C4090DC-EAE2-44CE-A1AE-76B014B686BE}</ProjectGuid>
+    <ProjectGuid>{D8D0AB75-B811-4A30-A98A-EC610E553E8A}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>OpenContact.Synchronizator.Console</RootNamespace>
-    <AssemblyName>OpenContact.Synchronizator.Console</AssemblyName>
+    <RootNamespace>Test</RootNamespace>
+    <AssemblyName>Test</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,6 +42,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,14 +59,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OpenContact.BLL.Implementation\OpenContact.BLL.Implementations.csproj">
-      <Project>{592d402a-270e-4a28-aa86-69b161bcf1aa}</Project>
-      <Name>OpenContact.BLL.Implementations</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\OpenContact.BLL\OpenContact.BLL.Interfaces.csproj">
-      <Project>{e7181bd7-5929-4b27-96ab-217e907c61e0}</Project>
-      <Name>OpenContact.BLL.Interfaces</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OpenContact.EF\OpenContact.EF.csproj">
       <Project>{999c8699-4682-4b36-8d69-9426f3a5a7fa}</Project>
       <Name>OpenContact.EF</Name>

@@ -13,7 +13,7 @@ namespace OpenContact.BLL.Implementations
    public class NewsReader: INewsReader
     {
 
-        public List<NewsPost> Read(string url)
+        public List<NewsPostDTO> Read(string url)
         {
             //string url = "http://habrahabr.ru/rss/ ";
 
@@ -25,13 +25,13 @@ namespace OpenContact.BLL.Implementations
             //XmlDocument xml = new XmlDocument();
             //xml.Load(reader);
 
-            List<NewsPost> list = new List<NewsPost>();
+            List<NewsPostDTO> list = new List<NewsPostDTO>();
 
             SyndicationFeed feed = SyndicationFeed.Load(reader);
             reader.Close();
             foreach (SyndicationItem item in feed.Items)
             {
-                var newPost = new NewsPost();
+                var newPost = new NewsPostDTO();
                 newPost.ResourceId = item.Id;
                 newPost.NewsName = item.Title.Text;
                 newPost.DataSource = url;
@@ -40,7 +40,6 @@ namespace OpenContact.BLL.Implementations
 
                 list.Add(newPost);
             }
-            
             return list;
         }
     }

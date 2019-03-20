@@ -8,7 +8,7 @@ namespace OpenContact.BLL.Interfaces
 {
     public interface INewsRepository
     {
-        DateTime? GetNearestNewsDate(int DataSourceId);
-        void AddNewsPost(NewsPost newsPost);
+        DateTime? GetNearestNewsDate();
+        void AddNewsPost(NewsPostDTO newsPost);
     }
 }

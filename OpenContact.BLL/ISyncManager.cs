@@ -9,7 +9,7 @@ namespace OpenContact.BLL.Interfaces
 {
     public interface ISyncManager
     {
-        NewsPost ProcessAllSources();
-        NewsPost ProcessByName(string name);
+        void ProcessAllSources();
+        void ProcessByName(string name);
     }
 }

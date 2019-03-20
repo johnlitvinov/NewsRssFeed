@@ -15,12 +15,11 @@ namespace OpenContact.EF
     public partial class NewsPost
     {
         public int Id { get; set; }
-        public string DataSource { get; set; }
+        public int DataSourceId { get; set; }
         public string NewsName { get; set; }
         public string NewsDescription { get; set; }
         public Nullable<System.DateTime> DateOfPublication { get; set; }
         public string ResourceID { get; set; }
-        public int DataSourceId { get; set; }
     
         public virtual NewsSource NewsSource { get; set; }
     }

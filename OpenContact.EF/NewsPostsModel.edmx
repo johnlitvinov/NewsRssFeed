@@ -20,7 +20,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" />
           <Property Name="Url" Type="nvarchar(max)" />
         </EntityType>
@@ -60,20 +60,19 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="DataSource" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataSourceId" Type="Int32" Nullable="false" />
           <Property Name="NewsName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NewsDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DateOfPublication" Type="DateTime" Precision="3" />
           <Property Name="ResourceID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="DataSourceId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="NewsSource" Relationship="TestProgramDataBaseModel.FK_NewsPosts_NewsSources" FromRole="NewsPost" ToRole="NewsSource" />
         </EntityType>
         <EntityType Name="NewsSource">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="NewsPosts" Relationship="TestProgramDataBaseModel.FK_NewsPosts_NewsSources" FromRole="NewsSource" ToRole="NewsPost" />
@@ -99,11 +98,11 @@
           <EntitySetMapping Name="NewsPosts">
             <EntityTypeMapping TypeName="TestProgramDataBaseModel.NewsPost">
               <MappingFragment StoreEntitySet="NewsPosts">
-                <ScalarProperty Name="DataSourceId" ColumnName="DataSourceId" />
                 <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
                 <ScalarProperty Name="DateOfPublication" ColumnName="DateOfPublication" />
                 <ScalarProperty Name="NewsDescription" ColumnName="NewsDescription" />
                 <ScalarProperty Name="NewsName" ColumnName="NewsName" />
+                <ScalarProperty Name="DataSourceId" ColumnName="DataSourceId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

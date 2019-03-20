@@ -2,24 +2,37 @@
 using OpenContact.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common.CommandTrees;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using OpenContact.EF;
 
 namespace OpenContact.BLL.Implementations
 {
     public class SyncManager : ISyncManager
 
     {
-        public NewsPost ProcessAllSources()
+        public void ProcessAllSources()
         {
-            throw new NotImplementedException();
+            using (var db = new TestProgramDataBaseEntities())
+            {
+                 var datasource = db.NewsSources.ToList();
+            }
         }
 
-        public NewsPost ProcessByName(string name)
+        public void ProcessByName(string name)
         {
-            throw new NotImplementedException();
+            using (var db = new TestProgramDataBaseEntities())
+            {
+                var datasource = db.NewsSources.Where(n => n.Name == name).First();
+                Process(datasource,db);
+            }
+        }
+
+        private void Process(NewsSource source, TestProgramDataBaseEntities db)
+        {
+
         }
     }
 }

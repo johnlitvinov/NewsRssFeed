@@ -11,12 +11,12 @@ namespace OpenContact.BLL.Implementations
 {
     public class NewsRepository : INewsRepository
     {
-        void INewsRepository.AddNewsPost(NewsPost newsPost)
+       public void AddNewsPost(NewsPostDTO newsPost)
         {
             throw new NotImplementedException();
         }
 
-        DateTime? INewsRepository.GetNearestNewsDate(int DataSourceId)
+       public DateTime? GetNearestNewsDate()
         {
             throw new NotImplementedException();
         }

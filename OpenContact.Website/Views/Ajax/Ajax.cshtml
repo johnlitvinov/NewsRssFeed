@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Ajax";
+}
+
+<h2>Ajax</h2>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <style>
+        table {
+            border: 1px solid black;
+            width: 50%;
+        }
+        th {
+            border: 1px solid black;
+        }
+        td {
+            border: 1px solid black;
+        }
+    </style>
+    <script 
+        src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+    </script>
+</head>
+
+<p><input type ="button" id="showResult" value="Просмотреть"></p>
+<script>
+    $(document).ready(function() {
+        $('#showResult').click(function() {
+
+            $.ajax({
+                type: "GET",
+                dataType: 'json',
+                url: '/Ajax/Result',
+                success: function(jsondata) {
+                    var table = $("#table tbody");
+                    table.empty();
+
+                    for (i = 0; i < jsondata.length; i++) {
+                        var rowData = jsondata[i];
+                       
+                        var tr = $("<tr></tr>");
+                        var ColumnNewsName = $("<td></td>");
+                        var ColumnNewsDescription = $("<td></td>");
+                        var ColumnDataSource = $("<td></td>");
+                        var ColumnDateOfPublication = $("<td></td>");
+                        ColumnNewsName.html(rowData.NewsName);
+                        ColumnNewsDescription.html(rowData.NewsDescription);
+                        ColumnDataSource.html(rowData.DataSource);
+                        ColumnDateOfPublication.html(rowData.DateOfPublication);
+                        tr.append(ColumnNewsName);
+                        tr.append(ColumnNewsDescription);
+                        tr.append(ColumnDataSource);
+                        tr.append(ColumnDateOfPublication);
+                        table.append(tr);
+                    }
+                }
+            })
+        });
+    });
+</script>
+
+<table id="table">
+    <thead>
+    <tr>
+        <th>Источник </th>
+        <th>Название новости</th>
+        <th>Описание новости</th>
+        <th>Дата публикации</th>
+    </tr>
+    </thead>
+
+   <tbody>
+      <tr>
+       <td> </td>
+       <td> </td>
+       <td> </td>
+       <td> </td>
+      </tr>
+   </tbody>
+</table>
+
