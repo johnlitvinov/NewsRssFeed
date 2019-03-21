@@ -50,7 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NewsReader.cs" />
-    <Compile Include="NewsRepository.cs" />
+    <Compile Include="NewsPostsRepository.cs" />
+    <Compile Include="NewsSourcesRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SyncManager.cs" />
   </ItemGroup>

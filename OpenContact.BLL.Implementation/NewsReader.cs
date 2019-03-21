@@ -7,24 +7,28 @@ using OpenContact.BLL.Interfaces;
 using System.Xml;
 using System.ServiceModel.Syndication;
 using OpenContact.Models;
+using System.IO;
+using System.Net;
+using System.Text.RegularExpressions;
 
 namespace OpenContact.BLL.Implementations
 {
    public class NewsReader: INewsReader
-    {
-
+   {
         public List<NewsPostDTO> Read(string url)
         {
-            //string url = "http://habrahabr.ru/rss/ ";
+            string cleanedXML = string.Empty;
+            using (WebClient client = new WebClient())
+            {
+                client.Encoding = Encoding.UTF8;
+                string rawXML = client.DownloadString(url);
+                rawXML = rawXML.Replace("\n", "");
+                rawXML = rawXML.Replace("\r", "");
+                Regex regex = new Regex(@">\s*<");
+                cleanedXML = regex.Replace(rawXML, "><");
+            }
 
-            XmlReaderSettings readerSettings = new XmlReaderSettings();
-            readerSettings.IgnoreComments = true;
-            readerSettings.IgnoreWhitespace = true;
-            XmlReader reader = XmlReader.Create(url, readerSettings);
-
-            //XmlDocument xml = new XmlDocument();
-            //xml.Load(reader);
-
+            XmlReader reader = XmlReader.Create(new StringReader(cleanedXML));
             List<NewsPostDTO> list = new List<NewsPostDTO>();
 
             SyndicationFeed feed = SyndicationFeed.Load(reader);

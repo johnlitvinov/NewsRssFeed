@@ -10,7 +10,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DataSourceId" Type="int" Nullable="false" />
+          <Property Name="NewsSourceId" Type="int" Nullable="false" />
           <Property Name="NewsName" Type="nvarchar(max)" />
           <Property Name="NewsDescription" Type="nvarchar(max)" />
           <Property Name="DateOfPublication" Type="datetime" />
@@ -32,7 +32,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="NewsPosts">
-              <PropertyRef Name="DataSourceId" />
+              <PropertyRef Name="NewsSourceId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -61,7 +61,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DataSourceId" Type="Int32" Nullable="false" />
+          <Property Name="NewsSourceId" Type="Int32" Nullable="false" />
           <Property Name="NewsName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NewsDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DateOfPublication" Type="DateTime" Precision="3" />
@@ -85,11 +85,11 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="NewsPost">
-              <PropertyRef Name="DataSourceId" />
+              <PropertyRef Name="NewsSourceId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -102,7 +102,7 @@
                 <ScalarProperty Name="DateOfPublication" ColumnName="DateOfPublication" />
                 <ScalarProperty Name="NewsDescription" ColumnName="NewsDescription" />
                 <ScalarProperty Name="NewsName" ColumnName="NewsName" />
-                <ScalarProperty Name="DataSourceId" ColumnName="DataSourceId" />
+                <ScalarProperty Name="NewsSourceId" ColumnName="NewsSourceId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

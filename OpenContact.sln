@@ -23,8 +23,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenContact.EF", "OpenConta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenContact.Models", "OpenContact.Models\OpenContact.Models.csproj", "{EC8D5149-2EB2-44DC-9063-494C3DC30799}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{D8D0AB75-B811-4A30-A98A-EC610E553E8A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,10 +61,6 @@ Global
 		{EC8D5149-2EB2-44DC-9063-494C3DC30799}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC8D5149-2EB2-44DC-9063-494C3DC30799}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC8D5149-2EB2-44DC-9063-494C3DC30799}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D8D0AB75-B811-4A30-A98A-EC610E553E8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8D0AB75-B811-4A30-A98A-EC610E553E8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D8D0AB75-B811-4A30-A98A-EC610E553E8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D8D0AB75-B811-4A30-A98A-EC610E553E8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

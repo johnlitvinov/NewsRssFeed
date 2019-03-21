@@ -45,11 +45,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="INewsReader.cs" />
-    <Compile Include="INewsRepository.cs" />
+    <Compile Include="INewsPostsRepository.cs" />
+    <Compile Include="INewsSourcesRepository.cs" />
     <Compile Include="ISyncManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OpenContact.EF\OpenContact.EF.csproj">
+      <Project>{999c8699-4682-4b36-8d69-9426f3a5a7fa}</Project>
+      <Name>OpenContact.EF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenContact.Models\OpenContact.Models.csproj">
       <Project>{ec8d5149-2eb2-44dc-9063-494c3dc30799}</Project>
       <Name>OpenContact.Models</Name>
