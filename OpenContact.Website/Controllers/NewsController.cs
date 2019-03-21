@@ -32,24 +32,37 @@ namespace OpenContact.Website.Controllers
         }
        
         [HttpGet]
-        public JsonResult GetNews(string sourceId)
+        public JsonResult GetNews(string sourceId, string sortBy)
         {
-           // _newsPostsRepository
+            List<NewsPost> newsPosts = null;
 
-            using (TestProgramDataBaseEntities db = new TestProgramDataBaseEntities())
+            if (sourceId == "all")
             {
-                var newsPosts = db.NewsPosts
-                    .Include("NewsSource")
-                    .ToList();
-
-                return Json(newsPosts.Select(s => new
-                {
-                    s.NewsName,
-                    s.NewsDescription,
-                    DataSource = s.NewsSource.Name,
-                    DateOfPublication = s.DateOfPublication.ToString()
-                }), JsonRequestBehavior.AllowGet);
+                newsPosts = _newsPostsRepository.GetNewsPosts();
             }
+            else
+            {
+                newsPosts = _newsPostsRepository.GetNewsPostsBySourceId(int.Parse(sourceId));
+            }
+
+            switch (sortBy)
+            {
+                case "date":
+                    newsPosts = newsPosts.OrderByDescending(n => n.DateOfPublication).ToList();
+                    break;
+                case "source":
+                    newsPosts = newsPosts.OrderBy(n => n.NewsSource.Name).ToList();
+                    break;
+            }
+            
+            return Json(newsPosts.Select(s => new
+            {
+                s.NewsName,
+                s.ResourceID,
+                s.NewsDescription,
+                DataSource = s.NewsSource.Name,
+                DateOfPublication = s.DateOfPublication.ToString()
+            }), JsonRequestBehavior.AllowGet);
         }
     }
 }

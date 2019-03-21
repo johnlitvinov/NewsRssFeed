@@ -9,7 +9,9 @@ namespace OpenContact.BLL.Interfaces
 {
     public interface INewsPostsRepository
     {
-        DateTime? GetLatestNewsPostByNewsSourceId(int newsSourceId);
+        List<NewsPost> GetNewsPosts();
+        List<NewsPost> GetNewsPostsBySourceId(int sourceId);
+        DateTime? GetLatestNewsPostByNewsSourceId(int sourceId);
         void SaveNewsPosts(List<NewsPost> newsPosts);
     }
 }

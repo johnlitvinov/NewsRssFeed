@@ -1,24 +1,33 @@
 ﻿  <script type="text/javascript">
+      var datatable = null;
       var renderTable = function (jsondata) {
-         $('#newsTable').DataTable({
-              data: jsondata,
-              columns: [
-                  { data: 'DataSource' },
-                  {
-                      data: 'NewsName',
-                      //render: function(data, index, row) {
-                      //    return "<div style='width:500px'>" + data + "</div>";
-                      //}
-                  },
-                  { data: 'NewsDescription' },
-                  { data: 'DateOfPublication' }
-              ]
-          });
+          if (datatable == null) {
+              datatable = $('#newsTable').DataTable({
+                  data: jsondata,
+                  bSort: false,
+                  columns: [
+                      {data: 'DataSource'},
+                      {
+                          data: 'NewsName',
+                          render: function(data, index, row) {
+                              return "<a href='" + row.ResourceID + "' target='_blank'>" + data + "</div>";
+                          }
+                      },
+                      {data: 'NewsDescription'},
+                      {data: 'DateOfPublication'}
+                  ]
+              });
+          } else {
+              datatable.clear();
+              datatable.rows.add(jsondata);
+              datatable.draw();
+          }
       }
 
-      var loadNews = function() {
+      var loadNews = function () {
           var selectedSource = $("#newsSourceSelector").val();
-          var url = '@Url.Action("GetNews", "News")' + "?sourceId=" + selectedSource;
+          var sortBy = $("input[name='sort']:checked").val();
+          var url = '@Url.Action("GetNews", "News")' + "?sourceId=" + selectedSource + "&sortBy=" + sortBy;
           console.log(url);
           $.ajax({
               type: "GET",
@@ -33,6 +42,10 @@
 
       $(document).ready(function () {
           //loadNews();
+
+          //$("#newsSourceSelector").change(function() {
+          //    loadNews();
+          //});
           
           $('#show').click(function () {
               loadNews();

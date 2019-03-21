@@ -28,6 +28,27 @@ namespace OpenContact.BLL.Implementations
             return date;
         }
 
+        public List<NewsPost> GetNewsPosts()
+        {
+            using (TestProgramDataBaseEntities db = new TestProgramDataBaseEntities())
+            {
+                return db.NewsPosts
+                    .Include("NewsSource")
+                    .ToList();
+            }
+        }
+
+        public List<NewsPost> GetNewsPostsBySourceId(int sourceId)
+        {
+            using (TestProgramDataBaseEntities db = new TestProgramDataBaseEntities())
+            {
+                return db.NewsPosts
+                    .Include("NewsSource")
+                    .Where(np => np.NewsSourceId == sourceId)
+                    .ToList();
+            }
+        }
+
         public void SaveNewsPosts(List<NewsPost> newsPosts)
         {
             using (TestProgramDataBaseEntities db = new TestProgramDataBaseEntities())
