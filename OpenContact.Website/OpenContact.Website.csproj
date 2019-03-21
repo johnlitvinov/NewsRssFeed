@@ -147,8 +147,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AjaxController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -217,7 +216,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -227,7 +225,8 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Ajax\Ajax.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\News\_IndexScripts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -250,6 +249,10 @@
     <ProjectReference Include="..\OpenContact.BLL.Implementation\OpenContact.BLL.Implementations.csproj">
       <Project>{592d402a-270e-4a28-aa86-69b161bcf1aa}</Project>
       <Name>OpenContact.BLL.Implementations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenContact.BLL\OpenContact.BLL.Interfaces.csproj">
+      <Project>{e7181bd7-5929-4b27-96ab-217e907c61e0}</Project>
+      <Name>OpenContact.BLL.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\OpenContact.EF\OpenContact.EF.csproj">
       <Project>{999c8699-4682-4b36-8d69-9426f3a5a7fa}</Project>

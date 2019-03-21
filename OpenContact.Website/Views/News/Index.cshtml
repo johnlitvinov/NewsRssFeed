@@ -1,0 +1,71 @@
+﻿@using OpenContact.EF
+
+@{
+    ViewBag.Title = "Новости (загрузка Ajax)";
+}
+
+<div>
+    <h3>Новостная лента (Ajax)</h3>
+</div>
+<div>
+    <p>
+        Источник ленты
+        <select id="newsSourceSelector">
+            <option value="all">Все</option>
+            @foreach (var source in (List<NewsSource>)ViewBag.NewsSources)
+            {
+                <option value="@source.Id">@source.Name</option>
+            }
+        </select>
+    </p>
+</div>
+
+<div>
+    <p>
+        <input name="sort" type="radio" value="date" checked> Сортировать по дате
+        <input name="sort" type="radio" value="source"> Сортировать по источнику
+    </p>
+    <p><input type="button" id="show" value="Просмотреть"></p>
+</div>
+
+
+<table id="newsTable" class="display" style="width:50%">
+    <thead>
+        <tr>
+            <th>Источник </th>
+            <th>Название новости</th>
+            <th>Описание новости</th>
+            <th>Дата публикации</th>
+        </tr>
+    </thead>
+</table>
+
+@section styles{
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
+    <style type="text/css">
+        #newsTable img {
+            max-width: 500px;
+        }
+
+        table {
+            border: 1px solid black;
+            width: 50%;
+        }
+
+        th {
+            border: 1px solid black;
+        }
+
+        td {
+            border: 1px solid black;
+        }
+    </style>
+}
+
+@section scripts
+{
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    
+    @Html.Partial("_IndexScripts")
+}

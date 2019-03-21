@@ -1,0 +1,41 @@
+﻿  <script type="text/javascript">
+      var renderTable = function (jsondata) {
+         $('#newsTable').DataTable({
+              data: jsondata,
+              columns: [
+                  { data: 'DataSource' },
+                  {
+                      data: 'NewsName',
+                      //render: function(data, index, row) {
+                      //    return "<div style='width:500px'>" + data + "</div>";
+                      //}
+                  },
+                  { data: 'NewsDescription' },
+                  { data: 'DateOfPublication' }
+              ]
+          });
+      }
+
+      var loadNews = function() {
+          var selectedSource = $("#newsSourceSelector").val();
+          var url = '@Url.Action("GetNews", "News")' + "?sourceId=" + selectedSource;
+          console.log(url);
+          $.ajax({
+              type: "GET",
+              url: url,  
+              dataType: 'json',
+              success: function (jsondata) {
+                  console.log(jsondata);
+                  renderTable(jsondata);
+              },
+          });
+      }
+
+      $(document).ready(function () {
+          //loadNews();
+          
+          $('#show').click(function () {
+              loadNews();
+          });
+      });
+  </script>

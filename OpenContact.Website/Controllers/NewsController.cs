@@ -7,19 +7,35 @@ using System.Web.Mvc;
 using OpenContact.EF;
 using OpenContact.Models;
 using System.Data.Entity;
+using OpenContact.BLL.Implementations;
+using OpenContact.BLL.Interfaces;
 
 namespace OpenContact.Website.Controllers
 {
-    public class AjaxController : Controller
+    public class NewsController : Controller
     {
-        public ActionResult Ajax()
+        private readonly INewsSourcesRepository _newsSourcesRepository;
+        private readonly INewsPostsRepository _newsPostsRepository;
+
+        public NewsController()
         {
+            _newsSourcesRepository = new NewsSourcesRepository();
+            _newsPostsRepository = new NewsPostsRepository();
+        }
+
+        [HttpGet]
+        public ActionResult Index()
+        {
+            var sources = _newsSourcesRepository.GetAllNewsSources();
+            ViewBag.NewsSources = sources;
             return View();
         }
        
         [HttpGet]
-        public JsonResult Result()
+        public JsonResult GetNews(string sourceId)
         {
+           // _newsPostsRepository
+
             using (TestProgramDataBaseEntities db = new TestProgramDataBaseEntities())
             {
                 var newsPosts = db.NewsPosts
