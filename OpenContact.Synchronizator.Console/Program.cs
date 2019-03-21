@@ -25,6 +25,8 @@ namespace OpenContact.Synchronizator
 
             ISyncManager syncManager = new SyncManager();
             syncManager.ProcessAllSources();
+
+            Console.ReadKey();
         }
     }
 }

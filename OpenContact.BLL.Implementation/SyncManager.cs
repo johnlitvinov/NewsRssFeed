@@ -55,6 +55,7 @@ namespace OpenContact.BLL.Implementations
             var filteredNewsEntities = news
                 .Select(s => new NewsPost()
                 {
+                    ResourceID = s.ResourceId,
                     NewsName = s.NewsName,
                     NewsDescription = s.NewsDescription,
                     DateOfPublication = s.DateOfPublication,
@@ -63,7 +64,7 @@ namespace OpenContact.BLL.Implementations
                 .ToList();
 
             _newsPostsRepository.SaveNewsPosts(filteredNewsEntities);
-            Console.ReadKey();
+            Console.WriteLine(string.Format("Сохранено {0} новостей из {1}", filteredNewsEntities.Count, newsSource.Name));
         }
 
         #region Assistants
